@@ -5,6 +5,10 @@
 1. [Purpose](#purpose)
 1. [Audience](#audience)
 1. [Guiding Principles](#guiding-principles)
+1. [Code is documentation](#code-documentation)
+1. [Code composition](#composition)
+1. [Testing](#testing)
+1. [General](#general)
 
 ## Purpose of this doc
 <a name="purpose"></a><a name="1.1"></a>
@@ -22,16 +26,20 @@ The intended audience for this doc is coders, collaborators and teams. The prima
 ## Code is documentation
 <a name="code-documentation"></a><a name="1.4"></a>
 *Code is both a document of intent as well as an instruction set of execution*
-* Declaritive over imperative
+* Declarative over imperative
 ```javascript
 // yes
+const LOWER_BOUND = 5;
+const UPPER_BOUND = 125;
+const isWithinValidRange(someValue) => someValue <= LOWER_BOUND || someValue > UPPER_BOUND;
+
 if (isWithinValidRange(someValue)) {
-    doSomthing();
+    doSomething();
 } 
 
 // no
-if (someValue && someValue <= 5 || someValue > 125) {
-    doSomthing();
+if (someValue <= 5 || someValue > 125) {
+    doSomething();
 } 
 ```
 * All function names are descriptive and verb-based
@@ -59,8 +67,25 @@ const getAreaFromRadius = radius => PI * radius ^ 2;
 const getAreaFromRadius = radius => 3.14 * radius ^ 2;
 
 ```
+* Avoid the use of comments unless absolutely necessary
+* Clarity over terseness in both names a patterns
 
-* Favor code clarity over terseness in both names a patterns
+## Code composition
+<a name="composition"></a><a name="1.5"></a>
+* Module structure
+* Pure functions
+* No mutation
+* Dependency injection
+* Single responsibility
+
+## Testing
+<a name="testing"></a><a name="1.6"></a>
+* Testing factories are preferred over fixtures
+* Unit tests - black box testing
+* Unit/Functional/Integration testing overlap - more is better within reason
+
+## General
+<a name="general"></a><a name="1.7"></a>
 * Consistency over innovation (unless new innovation becomes the consistency).
 
 
